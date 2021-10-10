@@ -1,23 +1,11 @@
-// import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import Form from "../Form";
 import Filter from "../Filter";
 import ContactList from "../ContactList";
 import { Container, Title, SecondaryTitle } from "./index";
-import { connect } from "react-redux";
-// import * as actions from "../../redux/contacts/contacts-actions"
+import { useSelector } from "react-redux";
 
-function App({ contacts }) {
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem("contacts"));
-  //   localStorage.length !== 0
-  //     ? setContacts([...data])
-  //     : localStorage.setItem("contacts", JSON.stringify([]));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("contacts", JSON.stringify([...contacts]));
-  // }, [contacts]);
+export default function App() {
+  const { contacts } = useSelector((state) => state);
 
   return (
     <>
@@ -26,25 +14,21 @@ function App({ contacts }) {
         <Form />
       </Container>
 
-      {contacts.length > 0 && (
+      {contacts.length > 0 ? (
         <Container>
           <SecondaryTitle>Contacts</SecondaryTitle>
           <Filter />
           <ContactList />
         </Container>
-      )}
+      ) : null}
     </>
   );
 }
 
-App.propTypes = {
-  contacts: PropTypes.array.isRequired,
-};
+// const mapStateToProps = ({ contacts }) => {
+//   return {
+//     contacts,
+//   };
+// };
 
-const mapStateToProps = ({ contacts }) => {
-  return {
-    contacts,
-  };
-};
-
-export default connect(mapStateToProps, null)(App);
+// export default connect(mapStateToProps, null)(App);

@@ -1,14 +1,15 @@
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Label, Input } from "./index";
 import * as actions from "../../redux/contacts/contacts-actions";
-import PropTypes from "prop-types";
 
-function Filter({ onChange }) {
+export default function Filter() {
+  const dispatch = useDispatch();
+
   return (
     <>
       <Label htmlFor="filter">Find contact by name</Label>
       <Input
-        onChange={onChange}
+        onChange={(e) => dispatch(actions.changeFilter(e.target.value))}
         type="text"
         name="filter"
         id="filter"
@@ -18,14 +19,10 @@ function Filter({ onChange }) {
   );
 }
 
-Filter.propTypes = {
-  onChamge: PropTypes.func,
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onChange: (e) => dispatch(actions.changeFilter(e.target.value)),
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onChange: (e) => dispatch(actions.changeFilter(e.target.value)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Filter);
+// export default connect(null, mapDispatchToProps)(Filter);

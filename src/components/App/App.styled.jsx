@@ -11,6 +11,7 @@ const Title = styled.h1`
 
 const SecondaryTitle = styled.h2`
   color: yellow;
+  margin-top: 0;
 `;
 
 export { Container, Title, SecondaryTitle };

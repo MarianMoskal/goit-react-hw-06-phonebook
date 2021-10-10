@@ -1,11 +1,9 @@
-import Contacts from "../Contacts";
+import Contacts from "../Contacts/Contacts";
 
-function ContactList() {
+export default function ContactList() {
   return (
     <ol>
       <Contacts />
     </ol>
   );
 }
-
-export default ContactList;
